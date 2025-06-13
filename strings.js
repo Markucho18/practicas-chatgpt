@@ -133,7 +133,8 @@ const obtenerCaracterMasFrecuente = (string) => {
 
 const caracterMasFrecuente = obtenerCaracterMasFrecuente(palabrita)
 
-console.log(caracterMasFrecuente)
+//console.log(caracterMasFrecuente)
+
 //Me estruji el cerebro pero no se me ocurrio una mejor forma
 
 /* Solucionde chatGPT, la correcta:
@@ -159,6 +160,23 @@ const obtenerCaracterMasFrecuente = (string) => {
 
   return masFrecuentes.length > 1 ? masFrecuentes : masFrecuentes[0];
 };
-
-
 */
+
+//Quinto Ejercicio: Busqueda(en array en vrd xdd)
+
+const numeros = [5, 8, 34, 14, 57, 42, 96, 87, 73, 2]
+
+const obtenerIndice = (numero) => {
+    for(let i = 0; i < numeros.length; i++){
+        const numeroActual = numeros[i]
+        if(numeroActual === numero){
+            return i
+        }
+    }
+    return -1
+}
+
+console.log(obtenerIndice(2))
+
+
+
