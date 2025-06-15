@@ -8,7 +8,7 @@ const sumarNumero = (numeroFijo) => {
 
 const sumarDiez = sumarNumero(10)
 
-console.log(sumarDiez(3))
+//console.log(sumarDiez(3))
 
 const crearSaludador = (nombre) => {
     return () => {
@@ -18,7 +18,7 @@ const crearSaludador = (nombre) => {
 
 const saludarPedro = crearSaludador("Pedro")
 
-console.log(saludarPedro())
+//console.log(saludarPedro())
 
 //Segundo Ejercicio: Limitar cantidad de veces que otra funcion es llamada
 
@@ -39,9 +39,9 @@ const saludar = () => {
 
 const saludarUnaVez = once(saludar)
 
+/* saludarUnaVez()
 saludarUnaVez()
-saludarUnaVez()
-saludarUnaVez()
+saludarUnaVez() */
 
 //Esta me pinto a mi, llevar una cuenta de las llamadas 
 
@@ -56,11 +56,11 @@ const contarFuncion = (funcion) => {
 
 const saludosContados = contarFuncion(saludar)
 
+/* saludosContados()
 saludosContados()
 saludosContados()
 saludosContados()
-saludosContados()
-saludosContados()
+saludosContados() */
 
 //Ahora que uno mismo limite la cantidad
 
@@ -81,10 +81,82 @@ const comprarLeche = () => {
 
 const comprarTresLeches = funcionLimite(comprarLeche, 3)
 
+/* comprarTresLeches()
 comprarTresLeches()
 comprarTresLeches()
 comprarTresLeches()
-comprarTresLeches()
-comprarTresLeches()
+comprarTresLeches() */
+
+
+//Esto lo hice para joder nomas xd
+const repetirFuncion = (funcion, veces) => {
+    for(let i = 0; i < veces; i++){
+        funcion()
+    }
+}
+
+const gritar = () => {
+    console.log("AAAAAAAAAAAAAAAAAA")
+}
+
+//repetirFuncion(gritar, 5)
 
 //Tercer Ejercicio: Memoizacion
+
+const resultados = {}
+
+const sumar = (num1, num2) => {
+    const clave = [num1, num2].join(",") 
+    const claveInversa = [num2, num1].join(",")
+    if(resultados[clave] || resultados[claveInversa]){
+        return resultados[clave] || resultados[claveInversa]
+    } else{
+        resultados[clave] = num1 + num2
+        return num1 + num2
+    }
+}
+
+/* console.log(sumar(3,4))
+console.log(sumar(5,6))
+console.log(sumar(8,7))
+console.log(sumar(6,5))
+console.log(sumar(4,9))
+console.log(resultados) */
+
+//Solucion de chatGPT
+/* const memoizar = (funcion) => {
+    const cache = new Map()
+    return (...args) => {
+        const clave = JSON.stringify(args)
+        console.log(cache)
+        if (cache.has(clave)) {
+            return cache.get(clave)
+        }
+        const resultado = funcion(...args)
+        cache.set(clave, resultado)
+        return resultado
+    }
+}
+
+const sumar = (a, b) => a + b
+const sumarMemo = memoizar(sumar)
+
+console.log(sumarMemo(3, 4))
+console.log(sumarMemo(6, 7))
+console.log(sumarMemo(9, 7))
+console.log(sumarMemo(14, 7))
+console.log(sumarMemo(4, 3)) // no considera la conmutatividad aquí */
+
+//Tema OBJECT / MAP
+/* | Característica     | `Object`                | `Map`                        |
+| ------------------ | ----------------------- | ---------------------------- |
+| Claves             | Solo strings o símbolos | Cualquier tipo (obj, array…) |
+| Orden de inserción | No garantizada          | Garantizada                  |
+| Rendimiento        | Razonable               | Más eficiente para búsquedas |
+| Métodos útiles     | Limitados (`has`, etc.) | `.set()`, `.get()`, `.has()` | */
+
+
+
+
+
+

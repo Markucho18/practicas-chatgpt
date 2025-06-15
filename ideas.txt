@@ -1,0 +1,59 @@
+Manipulación de strings y arrays:
+
+    Invertir palabras en una frase sin usar métodos directos (split, reverse).
+
+    Contar la frecuencia de cada palabra en un texto.
+
+    Validar si una palabra o frase es un palíndromo.
+
+    Encontrar el carácter más frecuente en un string.
+
+    Implementar funciones de búsqueda (por ejemplo, encontrar el índice de un elemento sin usar indexOf).
+
+Funciones y scope:
+
+    Crear funciones que retornen otras funciones (closures).
+
+    Implementar una función que limite la cantidad de veces que puede ser llamada otra función (función “once”).
+
+    Memoización: crear una función que cachee resultados para optimizar cálculos repetidos.
+
+Recursión:
+
+    Calcular el factorial o Fibonacci recursivamente.
+
+    Buscar elementos en estructuras anidadas (arrays dentro de arrays).
+
+    Resolver problemas clásicos como las Torres de Hanoi.
+
+Objetos y estructuras de datos:
+
+    Implementar un contador usando objetos para almacenar frecuencias.
+
+    Simular estructuras básicas como pilas o colas usando arrays o clases.
+
+    Crear una función para clonar objetos (shallow y deep cloning).
+
+Promesas y asincronía:
+
+    Simular una llamada asíncrona con setTimeout y manejar resultados con promesas.
+
+    Encadenar promesas para hacer varias tareas secuenciales.
+
+    Crear funciones async/await que manejen errores con try/catch.
+
+Algoritmos clásicos:
+
+    Ordenamiento (bubble sort, insertion sort).
+
+    Búsqueda binaria en arrays ordenados.
+
+    Algoritmos de filtrado y mapeo sin usar los métodos nativos (filter, map).
+
+Problemas matemáticos y de lógica:
+
+    Detectar si un número es primo.
+
+    Generar números pares o impares dentro de un rango.
+
+    Sumar dígitos de un número.
