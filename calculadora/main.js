@@ -4,7 +4,7 @@ const pantalla = document.getElementById("pantalla")
 
 let valorPantalla = ""
 
-let historial = []
+let historial = ["+"]
 
 let resultadoActual = 0
 
@@ -15,7 +15,8 @@ const modificarHistorial = (valor) => {
     } else{
         historial.push(valor)
     }
-    console.log(historial)
+    mostrarEnPantalla()
+    //El primer elemento no puede ser una operacion
     //Tambien debo comprobar si el ultimo elemento es una operacion no añadirlo, por que no hay dos opereaciones seguidas
 }
 
@@ -29,17 +30,70 @@ const borrar = () => {
     mostrarEnPantalla()
 }
 
+const operaciones = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "x": (a, b) => a * b,
+    "%": (a, b) => a / b 
+}
+
 const calcularResultado = () => {
-    console.log("calculando resultado...")
+
+    //Simplemente recorro de a pares
+
+    let cola = []
+    let total = 0
+
+    for(let i = 0; i < historial.length; i += 2){
+        const operacionActual = historial[i]
+        const numeroActual = parseInt(historial[i + 1])
+        const operacionProxima = historial[i + 2]
+        const operar = operaciones[operacionActual]
+        if(cola.length > 0){
+            const operacionAnterior = cola[0]
+            const numeroAnterior = cola[1]
+            total = operar(numeroAnterior, numeroActual)
+        }
+        console.log({operacionActual, numeroActual, operacionProxima})
+    }
+
+    /* let i = 0
+    let hayPar = false
+    do{
+        //Por que no lo incluye el ultimo
+        hayPar = historial.slice(i, i + 2).length === 2
+        const operacionActual = historial[i]
+        const numeroActual = parseInt(historial[i + 1])
+        const operacionProxima = historial[i + 2]
+        console.log({operacionActual, numeroActual, operacionProxima, hayPar})
+        i += 2
+    } while(hayPar) */
+
+
+    
+
+
+    /* console.log("calculando resultado...")
     //Hay que simular la prioridad 
     let total = 0
-    historial.forEach((elemento, i) => {
-        
-    })
+    for(let i = 0; i < 1; i++){
+        //Puedo sumar el total de los 3 primeros, y comprobar la siguiente operacion para descartar o seguir
+
+        const operacionActual = historial[i]
+        const numeroActual = historial[i + 1]
+        const operacionProxima = historial[i + 2]
+        if(["x", "%"].includes(operacionProxima)){
+            const operar = operaciones[operacionProxima]
+            
+        } else{
+            const operar = operaciones[operacionActual]
+            total = operar(total, parseInt(numeroActual))
+        }
+    } */
 }
 
 const mostrarEnPantalla = (valor) => {
-    valorPantalla = historial.join(" ")
+    valorPantalla = historial.slice(1).join(" ")
     pantalla.textContent = valorPantalla
 }
 
@@ -55,10 +109,7 @@ for(let i = 0; i < botones.length; i++){
         boton.addEventListener("click", calcularResultado)
     }
     else {
-        boton.addEventListener("click", () =>{
-            modificarHistorial(valor)
-            mostrarEnPantalla()
-        })
+        boton.addEventListener("click", () => modificarHistorial(valor))
     }
 }
 
